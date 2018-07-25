@@ -1,0 +1,14 @@
+# package directories
+node_modules
+jspm_packages
+example.json
+
+# Serverless directories
+.serverless
+
+# direnv resource
+.envrc
+
+.idea/
+.DS_Store
+test.js

@@ -1,0 +1,37 @@
+{
+  "name": "stripe-utils-for-dc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "./node_modules/.bin/eslint index.js lib/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Hidetaka Okamoto <info@wp-kyoto.net> (https://wp-kyoto.net)",
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier-eslint --write",
+      "./node_modules/eslint/bin/eslint.js",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "mocha": "^5.2.0",
+    "power-assert": "^1.6.0",
+    "prettier": "^1.13.7",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
+    "stripe": "^6.3.0"
+  }
+}

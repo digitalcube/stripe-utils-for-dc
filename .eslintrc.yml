@@ -1,1 +1,6 @@
 extends: standard
+globals:
+  describe: false
+  it: false
+  before: false
+  after: false

@@ -71,6 +71,44 @@ describe('putNewCard', () => {
       assert.equal(props.newCardId, customer.default_source)
     })
   })
+  describe('invalid customer id', () => {
+    let customer
+    let card
+    before(async () => {
+      props = await putStripeCustomer(
+        stripe,
+        username,
+        email,
+        userPoolId,
+        token,
+        'invalid customer id',
+        stage
+      )
+      customer = await stripe.customers.retrieve(props.stripeCustomerId)
+      card = await stripe.customers.retrieveCard(
+        props.stripeCustomerId,
+        customer.default_source
+      )
+    })
+    it('should has cardId', () => {
+      assert.notEqual(props.newCardId, '')
+    })
+    it('should has customer id', () => {
+      assert.notEqual(props.stripeCustomerId, '')
+    })
+    it('should has valid metadata', () => {
+      assert.deepEqual(customer.metadata, {
+        UserPoolId: userPoolId,
+        Username: username
+      })
+    })
+    it('should match default card brand', () => {
+      assert.deepEqual(card.brand, 'American Express')
+    })
+    after(async () => {
+      await stripe.customers.del(props.stripeCustomerId)
+    })
+  })
   describe('update next card', () => {
     let customer
     let card

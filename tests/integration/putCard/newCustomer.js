@@ -42,6 +42,21 @@ describe('putNewCard', () => {
         Username: username
       })
     })
+    it('should has last4', () => {
+      assert.notEqual(props.newCard.last4, '')
+    })
+    it('should has card id', () => {
+      assert.notEqual(props.newCard.id, '')
+    })
+    it('should has brand name', () => {
+      assert.equal(props.newCard.brand, 'American Express')
+    })
+    it('should has exp_month', () => {
+      assert.notEqual(props.newCard.exp_month, '')
+    })
+    it('should has exp_year', () => {
+      assert.notEqual(props.newCard.exp_year, '')
+    })
     it('should match default card brand', () => {
       assert.deepEqual(card.brand, 'American Express')
     })
